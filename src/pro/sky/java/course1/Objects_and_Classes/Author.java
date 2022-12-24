@@ -1,10 +1,12 @@
 package pro.sky.java.course1.Objects_and_Classes;
 
+import java.util.Objects;
+
 public class Author {
     private String firstName;// описание свойств (полей) класса Author
     private String lastName; // описание свойств (полей) класса Author
 
-    public Author(String firstName, String lastName)// конструктор объектов на основе класса Author
+    public Author(String firstName, String lastName)// конструктор для создания объектов класса Author
 
     {
         this.firstName = firstName; // присваивание полю firstName, принадлежащего классу Author, значения параметра firstName, переданного конструктору класса Author
@@ -18,5 +20,23 @@ public class Author {
 
     public String getLastName() {  // геттер — метод, который возвращает значение поля lastName
         return this.lastName;
+    }
+
+    @Override
+    public String toString() {
+        return firstName + " " + lastName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Author author = (Author) o;
+        return firstName.equals(author.firstName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName);
     }
 }
